@@ -1,0 +1,7 @@
+---
+- name: print some message
+  hosts: prod
+  tasks:
+    - name: testing print message
+      debug:
+        msg: "HI good morning"

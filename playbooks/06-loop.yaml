@@ -1,0 +1,20 @@
+---
+- name: installing the webserver
+  hosts: prod
+  become: yes
+  gather_facts: no
+  tasks:
+     - name: installing the httpd package
+       yum:
+         name: "{{item}}"
+         state: latest
+       loop:
+          - httpd
+          - git
+          - docker
+          - nginx
+        
+     - name: starting webservice
+       service: 
+         name: httpd
+         state: started

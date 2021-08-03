@@ -1,0 +1,5 @@
+- name: pinging the prod servers
+  hosts: prod
+  tasks:
+    - name: ping all the servers which are in production
+      ping:

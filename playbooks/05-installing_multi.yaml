@@ -1,0 +1,21 @@
+---
+- name: installing the webserver
+  hosts: prod
+  become: yes
+  tasks:
+     - name: installing the httpd package
+       yum:
+         name: httpd
+         state: latest
+     - name: starting webservice
+       service: 
+         name: httpd
+         state: started
+- name: installing the git client
+  hosts: prod
+  become: yes
+  tasks:
+     - name: installing the git package
+       yum:
+         name: git
+         state: latest

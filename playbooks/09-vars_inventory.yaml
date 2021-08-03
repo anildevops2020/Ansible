@@ -1,0 +1,39 @@
+- name: Demo on variables
+  hosts: prod
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: print the name
+      vars:
+        - user_name: anil
+        - user_age: 25
+      debug:
+        msg: "my name is {{user_name}} and my age is {{user_age}} "
+    - name: print the name
+      debug:
+        msg: "my name is {{user_name}} and my age is {{user_age}} "
+- name: Demo on variables
+  hosts: prod
+  gather_facts: no
+  become: yes
+  vars:
+    - user_name: rahim
+    - user_age: 25
+  tasks:
+    - name: print the name
+      debug:
+        msg: "my name is {{user_name}} and my age is {{user_age}} "
+- name: Demo on variables
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: print the name
+      vars:
+        - user_name: anil
+        - user_age: 25
+      debug:
+        msg: "my name is {{user_name}} and my age is {{user_age}} "
+    - name: print the name
+      debug:
+        msg: "my name is {{user_name}} and my age is {{user_age}} "
