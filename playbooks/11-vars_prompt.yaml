@@ -1,0 +1,10 @@
+- name: demo on variables from prompt
+  hosts: prod
+  vars_prompt:
+     - name: "PASSWD"
+       prompt: please enter your database password 
+       private: no 
+  tasks:
+    - name: print the database password
+      debug:
+        msg:  "my database password is {{PASSWD}}"

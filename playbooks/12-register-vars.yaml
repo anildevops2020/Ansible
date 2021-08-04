@@ -1,0 +1,18 @@
+- name : demo on registering the variables
+  hosts: prod
+  tasks:
+     - name: register the output variable
+       shell: id -u 
+       register: sample 
+     - name: printing the variable 
+       debug:
+         msg: "{{sample}}"
+     - name: printing the actual output variable
+       debug:
+         msg: "{{sample.stdout}}"
+     - name: storing the actual variable
+       set_fact:
+          MY_ID_NUM: "{{sample.stdout}}"
+     - name: print my actual variable
+       debug:
+         msg: "{{MY_ID_NUM}}"

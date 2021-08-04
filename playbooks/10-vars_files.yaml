@@ -1,0 +1,8 @@
+- name: demo on variables from files
+  hosts: prod
+  vars_files:
+     - student.yaml
+  tasks:
+     - name: printing the variables
+       debug:
+         msg: " my name is {{student_name}} and iam learning {{course_name}} "
