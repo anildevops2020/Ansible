@@ -1,0 +1,8 @@
+- name: deleting the fiiles
+  gather_facts: no
+  hosts: prod
+  tasks:
+    - name: deleting the file inside directory
+      file: 
+       path: /home/anil
+       state: directory

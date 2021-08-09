@@ -1,0 +1,10 @@
+- name: demo on copy module
+  gather_facts: no
+  hosts: prod
+  tasks:
+     - name: copying one of the file
+       copy: 
+         src: /home/anil/abc
+         dest: /tmp
+         remote_src: yes
+        # recursiv: yes

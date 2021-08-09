@@ -1,0 +1,9 @@
+- name: install the webserver
+  hosts: prod
+  tasks:
+    - name: installing the httpd package
+      yum:
+        name: httpd
+        state: latest
+      when: ansible_os_family == "RedHat" and ansible_distribution_version |int >= 8
+      #when: ansible_facts['os_family'] == "RedHat" and ansible_facts['ansible_distribution_version'] | int >= 6

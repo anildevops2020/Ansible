@@ -3,7 +3,6 @@ devops-test-1
 10.182.0.2
 [prod]
 devops-prod-1  
-10.128.0.3
 
 [all:vars]
 user_name=sai

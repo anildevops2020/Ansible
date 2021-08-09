@@ -1,0 +1,18 @@
+- name: deleting multiple files
+  hosts: prod
+  gather_facts: no
+  tasks:
+     - name: finding the files
+       find:
+        path: /home/anil
+        patterns: '*.log'
+       register: output
+     - name: printing all the files
+       debug:
+         msg: "{{output}}"
+     - name: deleting all the find files
+       file:
+         path: "{{item.path}}"
+         state: absent
+       loop:
+         "{{output.files}}"

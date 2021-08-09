@@ -1,0 +1,21 @@
+- name: demo on stat module
+  gather_facts: no
+  hosts: prod
+  tasks:
+    - name: getting the statistics of the file 
+      stat: 
+        path: /home/anil/sample.txt
+      register: st 
+    - name: print the statistics
+      debug:
+        msg: "{{st}}"
+    - name: if file exists
+      debug:
+        msg: "file already exists"
+      when: st.stat.exists == true
+    - name: if file does not exists
+      debug:
+        msg: "file does not exists"
+      when: st.stat.exists == false
+
+    

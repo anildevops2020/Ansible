@@ -1,0 +1,46 @@
+---
+- name: installing the webserver
+  hosts: prod
+  become: yes
+  gather_facts: no
+  tags:
+    - anil
+  tasks:
+     - name: installing the httpd package
+       tags:
+         - always
+       yum:
+         name: "{{item}}"
+         state: latest
+       loop:
+          - httpd
+          - git
+     - name: installing docker
+       tags:
+         - never
+       yum:
+         name: docker
+         state: latest
+     - name: starting webservice
+       service: 
+         name: httpd
+         state: started
+- name: installing the webserver
+  hosts: prod
+  become: yes
+  gather_facts: no
+  tags:
+    - sai 
+  tasks:
+     - name: installing the httpd package
+       tags:
+         - sample
+       yum:
+         name: nginx
+         state: latest
+
+     - name: installing ansible
+       yum:
+         name: ansible
+         state: latest
+     

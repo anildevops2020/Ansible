@@ -1,0 +1,9 @@
+- name: demo on fetch module
+  hosts: prod
+  gather_facts: no
+  tasks:
+     - name: copy file from remote to ansible controller 
+       fetch:
+          src: /home/anil/sample.txt
+          dest: /tmp/sample-{{inventory_hostname}}
+          flat: yes

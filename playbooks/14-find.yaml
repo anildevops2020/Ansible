@@ -1,0 +1,26 @@
+- name: demo on find module
+  hosts: prod
+  gather_facts: no
+  tasks:
+    - name: finding the files
+      find:
+        paths: /tmp
+        pattern: '*.log'
+      register: output
+    - name: print all the files
+      debug:
+        msg: "{{output}}"
+    - name: copying all the pattern files
+      copy:
+        src: "{{item.path}}"
+        dest: /home/anil
+        remote_src: yes
+      loop:
+        "{{output.files}}"
+    - name: print the pw_name
+      debug:
+        msg: "{{item.ctime}}"
+      loop:
+        "{{output.files}}"
+
+
